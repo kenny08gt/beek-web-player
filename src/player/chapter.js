@@ -10,6 +10,12 @@ class Chapter extends React.Component {
     // this.togglePlayState = this.togglePlayState.bind(this);
   }
 
+  secondsToMinutesAndSeconds = (seconds) => {
+    let min = Math.floor(seconds / 60);
+    let sec = (seconds - min * 60).toFixed(0);
+    return (min < 10 ? `0${min}` : min) + ":" + (sec < 10 ? `0${sec}` : sec);
+  };
+
   render() {
     return (
       <div className="flex my-2 ">
@@ -30,10 +36,7 @@ class Chapter extends React.Component {
         >
           <div>Nombre {(Math.random() * 10).toFixed(0)}</div>
           <div style={{ "margin-top": "-5px" }}>
-            <span>
-              {(Math.random() * 60).toFixed(0)}:
-              {(Math.random() * 60).toFixed(0)}
-            </span>
+            <span>{this.secondsToMinutesAndSeconds(Math.random() * 3400)}</span>
           </div>
         </div>
       </div>
