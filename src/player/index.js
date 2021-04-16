@@ -8,6 +8,7 @@ import Replay10Icon from "@material-ui/icons/Replay10";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import Slider from "@material-ui/core/Slider";
 
 class Player extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class Player extends React.Component {
   }
 
   handleProgress = (state) => {
-    console.log("onProgress", state);
+    // console.log("onProgress", state);
     // We only want to update time slider if we are not currently seeking
     if (!this.state.seeking) {
       this.setState(state);
@@ -59,13 +60,14 @@ class Player extends React.Component {
     this.setState({ seeking: true });
   };
 
-  handleSeekChange = (e) => {
-    this.setState({ played: parseFloat(e.target.value) });
+  handleSeekChange = (e, value) => {
+    // console.log(value);
+    this.setState({ played: parseFloat(value) });
   };
 
-  handleSeekMouseUp = (e) => {
+  handleSeekMouseUp = (e, value) => {
     this.setState({ seeking: false });
-    this.player.seekTo(parseFloat(e.target.value));
+    this.player.seekTo(parseFloat(value));
   };
 
   handleDuration = (duration) => {
@@ -87,12 +89,11 @@ class Player extends React.Component {
     return (min < 10 ? `0${min}` : min) + ":" + (sec < 10 ? `0${sec}` : sec);
   };
 
-  handleVolumeChange = (e) => {
-    this.setState({ volume: parseFloat(e.target.value) });
+  handleVolumeChange = (e, value) => {
+    this.setState({ volume: parseFloat(value) });
   };
 
   readMore() {
-    console.log("read more");
     this.setState({ fullDescription: !this.state.fullDescription });
   }
 
@@ -232,16 +233,16 @@ class Player extends React.Component {
                 this.state.duration * this.state.played
               )}
             </span>
-            <input
-              className="seek-bar"
+
+            <Slider
               type="range"
               min={0}
               max={0.999999}
-              step="any"
+              step={0.001}
               value={this.state.played}
               onMouseDown={this.handleSeekMouseDown}
               onChange={this.handleSeekChange}
-              onMouseUp={this.handleSeekMouseUp}
+              onChangeCommitted={this.handleSeekMouseUp}
             />
             <span className="elapsed-time">
               {this.secondsToMinutesAndSeconds(
@@ -283,12 +284,11 @@ class Player extends React.Component {
 
           <div className="volume-controls flex justify-center">
             <VolumeUpIcon color={"#252626"} />
-            <input
-              className="volume-bar"
+            <Slider
               type="range"
               min={0}
               max={1}
-              step="any"
+              step={0.001}
               value={this.state.volume}
               onChange={this.handleVolumeChange}
             />
