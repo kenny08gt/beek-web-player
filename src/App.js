@@ -34,10 +34,12 @@ function App() {
     Published by Beek Technologies, Inc the 2021-02-15T00:00:00Z`,
   };
 
+  let books = [book_1, book_2];
+
   return (
     <div>
       <Navbar></Navbar>
-      <Player book={book_2}></Player>
+      <Player book={books[0]}></Player>
     </div>
   );
 }
