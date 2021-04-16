@@ -1,0 +1,105 @@
+$height_controls: 80px;
+.player {
+    .information-wrapper {
+        background-image: linear-gradient(to right top, #6fe2e6, #57d6eb, #49c9ef, #4abbf0, #59aced, #59aced, #59aced, #59aced, #4abbf0, #49c9ef, #57d6eb, #6fe2e6);
+        height: calc(100vh);
+        z-index: 0;
+        .cover-wrapper {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            // width: 100%;
+            // height: 80%;
+            .audiobook-cover {
+                transform: translateY(-40px);
+                max-width: 350px;
+                max-height: 350px;
+                border-radius: 6px;
+                box-shadow: 0 0 19px 3px #54d4d8;
+            }
+        }
+        .chapters-wrapper {
+            // width: 100%;
+            min-height: calc(100vh - #{$height_controls});
+            margin-bottom: 90px;
+            width: 20%;
+            overflow-y: scroll;
+            // background: white;
+        }
+    }
+    .player-controls {
+        height: $height_controls;
+        bottom: 0;
+        position: absolute;
+        // background: red;
+        z-index: 2;
+        width: 100vw;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        .left-controls {
+            display: flex;
+
+            button {
+                &:focus, &:active {
+                    outline: none;
+                }
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                .icon {
+                    height: 50px;
+                    width: 50px;
+
+                }
+            }
+        }
+        .length-controls {
+            display: flex;
+            align-items: center;
+            width: 400px;
+            .current-time, .elapsed-time {
+                width: 70px;
+                color: $black;
+                display: block;
+                padding: 0 10px;
+            }
+
+            .seek-bar {
+                -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+                width: 100%; /* Specific width is required for Firefox. */
+                background: transparent; 
+                height: 2px;
+                // width: 500px;
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                  }
+                  
+                  &:focus {
+                    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+                  }
+                  
+                  *::-ms-track {
+                    width: 100%;
+                    cursor: pointer;
+                  
+                    /* Hides the slider so custom styles can be added */
+                    background: transparent; 
+                    border-color: transparent;
+                    color: transparent;
+                  }
+                  &::-webkit-slider-thumb, &::-moz-range-thumb, &::-ms-thumb {
+                    -webkit-appearance: none;
+                    border: 1px solid #000000;
+                    height: 36px;
+                    width: 16px;
+                    border-radius: 3px;
+                    background: #ffffff;
+                    cursor: pointer;
+                    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
+                  }
+            }
+        }
+    }
+}
