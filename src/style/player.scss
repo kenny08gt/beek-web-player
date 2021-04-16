@@ -377,7 +377,7 @@ $height_navbar: 80px;
   .volume-controls {
     margin-right: 20px;
     display: flex;
-    width: 10vw;
+    width: 16vw;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
@@ -388,5 +388,20 @@ $height_navbar: 80px;
   }
   .MuiSlider-track {
     background-color: $black;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .information-wrapper {
+      .cover-wrapper {
+        height: calc(100vh - #{$height_controls} - #{$height_navbar});
+        .audiobook-cover {
+          transform: none;
+        }
+
+        .author-info {
+          margin-top: 15px;
+        }
+      }
+    }
   }
 }
