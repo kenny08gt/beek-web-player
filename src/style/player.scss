@@ -44,10 +44,11 @@ $height_navbar: 80px;
         top: 0;
         right: 0;
         bottom: 0;
-        transform: translateY(-50px);
+        transform: translateY(-40px);
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: background-color 0.2s;
         .play {
           opacity: 0;
           pointer-events: none;
@@ -62,6 +63,13 @@ $height_navbar: 80px;
           // width: 50px;
         }
         &:hover {
+          background-color: #ffffff76;
+          background: rgba(255, 255, 255, 0.2);
+          box-shadow: 08px32px0rgba (31, 38, 135, 0.37);
+          -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+          // border-radius: 5px;
+          border: 1px solid rgba(255, 255, 255, 0.28);
           .play {
             opacity: 0.7;
             pointer-events: all;
@@ -148,6 +156,7 @@ $height_navbar: 80px;
           cursor: pointer;
           .section-name {
             position: relative;
+            font-weight: bold;
           }
           .chapters {
             li {
@@ -400,6 +409,10 @@ $height_navbar: 80px;
 
         .author-info {
           margin-top: 15px;
+        }
+
+        .controls-over {
+          transform: none;
         }
       }
     }
