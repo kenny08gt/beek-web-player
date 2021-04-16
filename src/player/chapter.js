@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import ProgressRing from "../components/progressRing";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import DoneIcon from "@material-ui/icons/Done";
 
 class Chapter extends React.Component {
   constructor(props) {
@@ -31,7 +29,7 @@ class Chapter extends React.Component {
           }}
         >
           {this.props.progress === 100 ? (
-            <DoneIcon fontSize="inherit" color="disabled" />
+            <CheckCircleOutlineIcon fontSize="inherit" color="disabled" />
           ) : (
             <Fragment>
               <ProgressRing
