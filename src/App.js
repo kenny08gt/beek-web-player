@@ -34,7 +34,12 @@ function App() {
     Published by Beek Technologies, Inc the 2021-02-15T00:00:00Z`,
   };
 
-  return <Player book={book_2}></Player>;
+  return (
+    <div>
+      <Navbar></Navbar>
+      <Player book={book_2}></Player>
+    </div>
+  );
 }
 
 export default App;

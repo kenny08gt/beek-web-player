@@ -1,5 +1,7 @@
 $height_controls: 80px;
+$height_navbar: 48px;
 .player {
+  margin-top: 50px;
   .information-wrapper {
     background-image: linear-gradient(
       to right top,
@@ -16,7 +18,7 @@ $height_controls: 80px;
       #57d6eb,
       #6fe2e6
     );
-    height: calc(100vh);
+    height: calc(100vh - #{$height_navbar});
     z-index: 0;
     .cover-wrapper {
       justify-content: center;
@@ -84,7 +86,7 @@ $height_controls: 80px;
     }
     .chapters-wrapper {
       // width: 100%;
-      min-height: calc(100vh - #{$height_controls});
+      min-height: calc(100vh - #{$height_controls} - #{$height_navbar});
       margin-bottom: 90px;
       //   width: 20%;
       overflow-y: scroll;

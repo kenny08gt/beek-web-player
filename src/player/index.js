@@ -104,7 +104,7 @@ class Player extends React.Component {
     return (
       <div className="player">
         <div className="information-wrapper w-screen">
-          <div className=" h-screen w-screen flex justify-between align-middle">
+          <div className=" w-screen flex justify-between align-middle">
             <div className="cover-wrapper m-auto">
               <div className="">
                 <div className="relative">
