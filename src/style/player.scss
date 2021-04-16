@@ -1,326 +1,361 @@
 $height_controls: 80px;
 .player {
-    .information-wrapper {
-        background-image: linear-gradient(to right top, #6fe2e6, #57d6eb, #49c9ef, #4abbf0, #59aced, #59aced, #59aced, #59aced, #4abbf0, #49c9ef, #57d6eb, #6fe2e6);
-        height: calc(100vh);
-        z-index: 0;
-        .cover-wrapper {
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            // width: 100%;
-            // height: 80%;
-            .audiobook-cover {
-                transform: translateY(-40px);
-                max-width: 350px;
-                max-height: 350px;
-                border-radius: 6px;
-                box-shadow: 0 0 19px 3px #54d4d8;
-                transition: transform 0.3s;
-                // &:hover {
-                //     transform: translateY(-40px) scale(1.02);
-                // }
-            }
+  .information-wrapper {
+    background-image: linear-gradient(
+      to right top,
+      #6fe2e6,
+      #57d6eb,
+      #49c9ef,
+      #4abbf0,
+      #59aced,
+      #59aced,
+      #59aced,
+      #59aced,
+      #4abbf0,
+      #49c9ef,
+      #57d6eb,
+      #6fe2e6
+    );
+    height: calc(100vh);
+    z-index: 0;
+    .cover-wrapper {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      // width: 100%;
+      // height: 80%;
+      .audiobook-cover {
+        transform: translateY(-40px);
+        max-width: 350px;
+        max-height: 350px;
+        border-radius: 6px;
+        box-shadow: 0 0 19px 3px #54d4d8;
+        transition: transform 0.3s;
+        // &:hover {
+        //     transform: translateY(-40px) scale(1.02);
+        // }
+      }
 
-            .controls-over {
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                transform: translateY(-50px);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .play {
-                    opacity: 0;
-                    pointer-events: none;
-                    transition: opacity 0.2s;
-                    font-size: 90px;
-                    &:focus, &:active {
-                        outline: none;
-                    }
-                    border-radius: 50%;
-                    // height: 50px;
-                    // width: 50px;
-                   
-                }
-                &:hover {
-                    .play {
-                        opacity: 0.7;
-                        pointer-events: all;
-                        &:hover {
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-
-            .author-info {
-                font-family: $font;
-                color: $black;
-                font-weight: bold;
-                margin-bottom: 10px;
-                cursor: default;
-                text-align: center;
-                small {
-                    font-weight: 400;
-                }
-            }
-        }
-        .chapters-wrapper {
-            // width: 100%;
-            min-height: calc(100vh - #{$height_controls});
-            margin-bottom: 90px;
-            width: 20%;
-            overflow-y: scroll;
-            // background: white;
-            h1 {
-                font-size: 20px;
-                font-family: $font;
-                color: $black;
-                font-weight: bold;
-                margin-bottom: 10px;
-                cursor: default;
-            }
-            p {
-                font-size: 14px;
-                font-family: $font;
-                color: $black; 
-                max-height: 120px;
-                overflow: hidden;
-                margin-bottom: 20px;
-
-                cursor: default;
-            }
-            hr {
-                border-color: $grey;
-            }
-
-            h2 {
-                cursor: default;
-                font-size: 17px;
-                font-family: $font;
-                color: $black;
-                font-weight: bold;
-                margin-bottom: 10px;
-                margin-top: 10px;
-            }
-
-            ul {
-                li {
-                    font-size: 14px;
-                    font-family: $font;
-                    color: $black; 
-                    cursor: pointer;
-                    .section-name {
-                        position: relative;   
-                      
-                    }
-                    .chapters {
-                        li {
-                            position: relative;
-
-                            &:hover {
-                                font-weight: bold;
-                                cursor: pointer;
-                            }
-                            &::after {
-                                content: ' ';
-                                position: absolute;
-                                border-left: 2px solid $black;                    
-                                border-bottom: 2px solid $black;                    
-                                height: 10px;
-                                width: 10px;
-                                left: -12px;
-                                top: 6px;
-                                border-bottom-left-radius: 4px;
-                                opacity: 0.2;
-                            }
-                            &::before {
-                                content: ' ';
-                                position: absolute;
-                                border-left: 2px solid $black;                    
-                                height: 11px;
-                                left: -12px;
-                                top: -5px;
-                                opacity: 0.2;
-                            }
-                        }
-                    }
-                    ul {
-                        margin-left: 15px;
-                    }
-                    span {
-                        font-size: 10px;
-                        font-family: $font;
-                        color: $black; 
-                        opacity: 0.7;
-                        margin: 12px;
-                    }
-                }
-            }
-
-            .legal-info {
-                margin-top: 40px;
-                font-size: 12px;
-                color: $black;
-
-                cursor: default;
-            }
-        }
-    }
-    .player-controls {
-        height: $height_controls;
-        bottom: 0;
+      .controls-over {
         position: absolute;
-        // background: red;
-        z-index: 2;
-        width: 100vw;
-        opacity: 0.8;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(-50px);
         display: flex;
+        justify-content: center;
         align-items: center;
-        .left-controls {
-            display: flex;
-
-            button {
-                &:focus, &:active {
-                    outline: none;
-                }
-                border-radius: 50%;
-                height: 50px;
-                width: 50px;
-                &.play {
-                    font-size: 50px;
-                    svg {
-                        margin-top: -35px;
-                    }
-                }
-            }
+        .play {
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s;
+          font-size: 90px;
+          &:focus,
+          &:active {
+            outline: none;
+          }
+          border-radius: 50%;
+          // height: 50px;
+          // width: 50px;
         }
-        .length-controls {
-            display: flex;
-            align-items: center;
-            width: 60vw;
-            .current-time, .elapsed-time {
-                width: 70px;
-                color: $black;
-                display: block;
-                padding: 0 10px;
-                box-sizing: content-box;
-                font-family: $font;
-                font-size: 12px;
-                text-align: center;
+        &:hover {
+          .play {
+            opacity: 0.7;
+            pointer-events: all;
+            &:hover {
+              opacity: 1;
             }
+          }
         }
+      }
 
-        .seek-bar, .volume-bar {
-            -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-            width: 100%; /* Specific width is required for Firefox. */
-            background: transparent; 
-            // height: 2px;
-            // width: 500px;
-            &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-              }
-              
-              &:focus {
-                outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-              }
-              
-              *::-ms-track {
-                width: 100%;
-                cursor: pointer;
-              
-                /* Hides the slider so custom styles can be added */
-                background: transparent; 
-                border-color: transparent;
-                color: transparent;
-              }
-
-              //thumb
-              &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                border: 1px solid $black;
-                height: 15px;
-                width: 15px;
-                border-radius: 50%;
-                background: $black;
-                cursor: pointer;
-                margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-              }
-              &::-moz-range-thumb{
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                border: 1px solid $black;
-                height: 15px;
-                width: 15px;
-                border-radius: 50%;
-                background: $black;
-                cursor: pointer;
-              }
-              &::-ms-thumb {
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                border: 1px solid $black;
-                height: 15px;
-                width: 15px;
-                border-radius: 50%;
-                background: $black;
-                cursor: pointer;   
-            }
-
-            // track
-            &::-webkit-slider-runnable-track {
-                width: 100%;
-                height: 2px;
-                cursor: pointer;
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                background: $black;
-                border-radius: 1.3px;
-                border: 0.2px solid #010101;
-              }
-              
-              &:focus::-webkit-slider-runnable-track {
-                background: #367ebd;
-              }
-              
-              &::-moz-range-track {
-                width: 100%;
-                height: 2px;
-                cursor: pointer;
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                background: #3071a9;
-                border-radius: 1.3px;
-                border: 0.2px solid #010101;
-              }
-              
-              &::-ms-track {
-                width: 100%;
-                height: 2px;
-                cursor: pointer;
-                background: transparent;
-                border-color: transparent;
-                border-width: 16px 0;
-                color: transparent;
-              }
-              &::-ms-fill-lower {
-                background: #2a6495;
-                border: 0.2px solid #010101;
-                border-radius: 2.6px;
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-              }
-              &:focus::-ms-fill-lower {
-                background: #3071a9;
-              }
-              &::-ms-fill-upper {
-                background: #3071a9;
-                border: 0.2px solid #010101;
-                border-radius: 2.6px;
-                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-              }
-              &:focus::-ms-fill-upper {
-                background: #367ebd;
-              }
+      .author-info {
+        font-family: $font;
+        color: $black;
+        font-weight: bold;
+        margin-bottom: 10px;
+        cursor: default;
+        text-align: center;
+        small {
+          font-weight: 400;
         }
+      }
     }
+    .chapters-wrapper {
+      // width: 100%;
+      min-height: calc(100vh - #{$height_controls});
+      margin-bottom: 90px;
+      //   width: 20%;
+      overflow-y: scroll;
+      // background: white;
+      h1 {
+        font-size: 20px;
+        font-family: $font;
+        color: $black;
+        font-weight: bold;
+        margin-bottom: 10px;
+        cursor: default;
+      }
+      p {
+        font-size: 14px;
+        font-family: $font;
+        color: $black;
+        max-height: 120px;
+        overflow: hidden;
+        margin-bottom: 20px;
+
+        cursor: default;
+      }
+      hr {
+        border-color: $grey;
+      }
+
+      h2 {
+        cursor: default;
+        font-size: 17px;
+        font-family: $font;
+        color: $black;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      ul {
+        li {
+          font-size: 14px;
+          font-family: $font;
+          color: $black;
+          cursor: pointer;
+          .section-name {
+            position: relative;
+          }
+          .chapters {
+            li {
+              position: relative;
+
+              &:hover {
+                font-weight: bold;
+                cursor: pointer;
+              }
+              &::after {
+                content: " ";
+                position: absolute;
+                border-left: 2px solid $black;
+                border-bottom: 2px solid $black;
+                height: 10px;
+                width: 10px;
+                left: -12px;
+                top: 6px;
+                border-bottom-left-radius: 4px;
+                opacity: 0.2;
+              }
+              &::before {
+                content: " ";
+                position: absolute;
+                border-left: 2px solid $black;
+                height: 11px;
+                left: -12px;
+                top: -5px;
+                opacity: 0.2;
+              }
+            }
+          }
+          ul {
+            margin-left: 15px;
+          }
+          span {
+            font-size: 10px;
+            font-family: $font;
+            color: $black;
+            opacity: 0.7;
+            margin: 12px;
+          }
+        }
+      }
+
+      .legal-info {
+        margin-top: 40px;
+        font-size: 12px;
+        color: $black;
+
+        cursor: default;
+      }
+    }
+
+    @media screen {
+    }
+  }
+  .player-controls {
+    height: $height_controls;
+    bottom: 0;
+    position: absolute;
+    // background: red;
+    z-index: 2;
+    width: 100vw;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    .left-controls {
+      display: flex;
+      margin-left: 20px;
+      button {
+        &:focus,
+        &:active {
+          outline: none;
+        }
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        &.play {
+          font-size: 50px;
+          svg {
+            margin-top: -35px;
+          }
+        }
+      }
+    }
+    .length-controls {
+      display: flex;
+      align-items: center;
+      width: 60vw;
+      .current-time,
+      .elapsed-time {
+        width: 70px;
+        color: $black;
+        display: block;
+        padding: 0 10px;
+        box-sizing: content-box;
+        font-family: $font;
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+
+    .seek-bar,
+    .volume-bar {
+      -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+      width: 100%; /* Specific width is required for Firefox. */
+      background: transparent;
+      // height: 2px;
+      // width: 500px;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+      }
+
+      &:focus {
+        outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+      }
+
+      *::-ms-track {
+        width: 100%;
+        cursor: pointer;
+
+        /* Hides the slider so custom styles can be added */
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      //thumb
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: 1px solid $black;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background: $black;
+        cursor: pointer;
+        margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      }
+      &::-moz-range-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        border: 1px solid $black;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background: $black;
+        cursor: pointer;
+      }
+      &::-ms-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        border: 1px solid $black;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background: $black;
+        cursor: pointer;
+      }
+
+      // track
+      &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 2px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        background: $black;
+        border-radius: 1.3px;
+        border: 0.2px solid #010101;
+      }
+
+      &:focus::-webkit-slider-runnable-track {
+        background: #367ebd;
+      }
+
+      &::-moz-range-track {
+        width: 100%;
+        height: 2px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        background: #3071a9;
+        border-radius: 1.3px;
+        border: 0.2px solid #010101;
+      }
+
+      &::-ms-track {
+        width: 100%;
+        height: 2px;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        border-width: 16px 0;
+        color: transparent;
+      }
+      &::-ms-fill-lower {
+        background: #2a6495;
+        border: 0.2px solid #010101;
+        border-radius: 2.6px;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      }
+      &:focus::-ms-fill-lower {
+        background: #3071a9;
+      }
+      &::-ms-fill-upper {
+        background: #3071a9;
+        border: 0.2px solid #010101;
+        border-radius: 2.6px;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      }
+      &:focus::-ms-fill-upper {
+        background: #367ebd;
+      }
+    }
+  }
+
+  .speed-controls {
+    button {
+      font-family: $font;
+      color: $black;
+      font-size: 14px;
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  .volume-controls {
+    margin-right: 20px;
+  }
 }
