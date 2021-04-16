@@ -166,6 +166,15 @@ $height_navbar: 80px;
                 // color: $black;
               }
 
+              .progress-ring {
+                position: absolute;
+                left: -2px;
+                top: -2px;
+                svg {
+                  transform: rotate(271deg);
+                }
+              }
+
               &:hover {
                 font-weight: bold;
                 cursor: pointer;

@@ -1,5 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import ProgressRing from "../components/progressRing";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import DoneIcon from "@material-ui/icons/Done";
 
 class Chapter extends React.Component {
   constructor(props) {
@@ -20,13 +24,25 @@ class Chapter extends React.Component {
     return (
       <div className="flex my-2 ">
         <div
-          className="icon contents"
+          className="icon contents relative"
           style={{
             "font-size": "36px",
             color: this.props.listened ? "#26252575" : "#262525",
           }}
         >
-          <PlayCircleFilledIcon fontSize="inherit" color="inherit" />
+          {this.props.progress === 100 ? (
+            <DoneIcon fontSize="inherit" color="disabled" />
+          ) : (
+            <Fragment>
+              <ProgressRing
+                radius={20}
+                stroke={2}
+                progress={this.props.progress}
+                color={"#fff "}
+              />
+              <PlayCircleFilledIcon fontSize="inherit" color="inherit" />
+            </Fragment>
+          )}
         </div>
         <div
           className="name-time ml-2"

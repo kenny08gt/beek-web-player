@@ -163,10 +163,10 @@ class Player extends React.Component {
                   <div className="section-name">Prefacio</div>
                   <ul className="chapters">
                     <li>
-                      <Chapter listened={true} />
+                      <Chapter listened={true} progress={100} />
                     </li>
                     <li>
-                      <Chapter listened={true} />
+                      <Chapter listened={true} progress={100} />
                     </li>
                   </ul>
                 </li>
@@ -174,22 +174,22 @@ class Player extends React.Component {
                   <div className="section-name">Parte 1</div>
                   <ul className="chapters">
                     <li>
-                      <Chapter listened={true} />
+                      <Chapter listened={true} progress={100} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={75} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>{" "}
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                   </ul>
                 </li>
@@ -197,16 +197,16 @@ class Player extends React.Component {
                   <div className="section-name">Parte 2</div>
                   <ul className="chapters">
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                     <li>
-                      <Chapter />
+                      <Chapter progress={0} />
                     </li>
                   </ul>
                 </li>
