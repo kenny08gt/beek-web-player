@@ -17,10 +17,45 @@ $height_controls: 80px;
                 border-radius: 6px;
                 box-shadow: 0 0 19px 3px #54d4d8;
                 transition: transform 0.3s;
+                // &:hover {
+                //     transform: translateY(-40px) scale(1.02);
+                // }
+            }
+
+            .controls-over {
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                transform: translateY(-50px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .play {
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.2s;
+                    font-size: 90px;
+                    &:focus, &:active {
+                        outline: none;
+                    }
+                    border-radius: 50%;
+                    // height: 50px;
+                    // width: 50px;
+                   
+                }
                 &:hover {
-                    transform: translateY(-40px) scale(1.02);
+                    .play {
+                        opacity: 0.7;
+                        pointer-events: all;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
                 }
             }
+
             .author-info {
                 font-family: $font;
                 color: $black;
@@ -155,133 +190,137 @@ $height_controls: 80px;
                 border-radius: 50%;
                 height: 50px;
                 width: 50px;
-                .icon {
-                    height: 50px;
-                    width: 50px;
-
+                &.play {
+                    font-size: 50px;
+                    svg {
+                        margin-top: -35px;
+                    }
                 }
             }
         }
         .length-controls {
             display: flex;
             align-items: center;
-            width: 400px;
+            width: 60vw;
             .current-time, .elapsed-time {
                 width: 70px;
                 color: $black;
                 display: block;
                 padding: 0 10px;
                 box-sizing: content-box;
+                font-family: $font;
+                font-size: 12px;
+                text-align: center;
             }
+        }
 
-            .seek-bar {
-                -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-                width: 100%; /* Specific width is required for Firefox. */
+        .seek-bar, .volume-bar {
+            -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+            width: 100%; /* Specific width is required for Firefox. */
+            background: transparent; 
+            // height: 2px;
+            // width: 500px;
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+              }
+              
+              &:focus {
+                outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+              }
+              
+              *::-ms-track {
+                width: 100%;
+                cursor: pointer;
+              
+                /* Hides the slider so custom styles can be added */
                 background: transparent; 
-                // height: 2px;
-                // width: 500px;
-                &::-webkit-slider-thumb {
-                    -webkit-appearance: none;
-                  }
-                  
-                  &:focus {
-                    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-                  }
-                  
-                  *::-ms-track {
-                    width: 100%;
-                    cursor: pointer;
-                  
-                    /* Hides the slider so custom styles can be added */
-                    background: transparent; 
-                    border-color: transparent;
-                    color: transparent;
-                  }
+                border-color: transparent;
+                color: transparent;
+              }
 
-                  //thumb
-                  &::-webkit-slider-thumb {
-                    -webkit-appearance: none;
-                    border: 1px solid $black;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 50%;
-                    background: $black;
-                    cursor: pointer;
-                    margin-top: -10px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                  }
-                  &::-moz-range-thumb{
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                    border: 1px solid $black;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 50%;
-                    background: $black;
-                    cursor: pointer;
-                  }
-                  &::-ms-thumb {
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                    border: 1px solid $black;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 50%;
-                    background: $black;
-                    cursor: pointer;   
-                }
-
-                // track
-                &::-webkit-slider-runnable-track {
-                    width: 100%;
-                    height: 2px;
-                    cursor: pointer;
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                    background: $black;
-                    border-radius: 1.3px;
-                    border: 0.2px solid #010101;
-                  }
-                  
-                  &:focus::-webkit-slider-runnable-track {
-                    background: #367ebd;
-                  }
-                  
-                  &::-moz-range-track {
-                    width: 100%;
-                    height: 2px;
-                    cursor: pointer;
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                    background: #3071a9;
-                    border-radius: 1.3px;
-                    border: 0.2px solid #010101;
-                  }
-                  
-                  &::-ms-track {
-                    width: 100%;
-                    height: 2px;
-                    cursor: pointer;
-                    background: transparent;
-                    border-color: transparent;
-                    border-width: 16px 0;
-                    color: transparent;
-                  }
-                  &::-ms-fill-lower {
-                    background: #2a6495;
-                    border: 0.2px solid #010101;
-                    border-radius: 2.6px;
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                  }
-                  &:focus::-ms-fill-lower {
-                    background: #3071a9;
-                  }
-                  &::-ms-fill-upper {
-                    background: #3071a9;
-                    border: 0.2px solid #010101;
-                    border-radius: 2.6px;
-                    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-                  }
-                  &:focus::-ms-fill-upper {
-                    background: #367ebd;
-                  }
+              //thumb
+              &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                border: 1px solid $black;
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                background: $black;
+                cursor: pointer;
+                margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              }
+              &::-moz-range-thumb{
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                border: 1px solid $black;
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                background: $black;
+                cursor: pointer;
+              }
+              &::-ms-thumb {
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                border: 1px solid $black;
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                background: $black;
+                cursor: pointer;   
             }
+
+            // track
+            &::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 2px;
+                cursor: pointer;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                background: $black;
+                border-radius: 1.3px;
+                border: 0.2px solid #010101;
+              }
+              
+              &:focus::-webkit-slider-runnable-track {
+                background: #367ebd;
+              }
+              
+              &::-moz-range-track {
+                width: 100%;
+                height: 2px;
+                cursor: pointer;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                background: #3071a9;
+                border-radius: 1.3px;
+                border: 0.2px solid #010101;
+              }
+              
+              &::-ms-track {
+                width: 100%;
+                height: 2px;
+                cursor: pointer;
+                background: transparent;
+                border-color: transparent;
+                border-width: 16px 0;
+                color: transparent;
+              }
+              &::-ms-fill-lower {
+                background: #2a6495;
+                border: 0.2px solid #010101;
+                border-radius: 2.6px;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              }
+              &:focus::-ms-fill-lower {
+                background: #3071a9;
+              }
+              &::-ms-fill-upper {
+                background: #3071a9;
+                border: 0.2px solid #010101;
+                border-radius: 2.6px;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              }
+              &:focus::-ms-fill-upper {
+                background: #367ebd;
+              }
         }
     }
 }

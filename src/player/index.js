@@ -1,22 +1,25 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
-import PlayIconUnselected from '../icons/play_circle_black_24dp.svg';
-import PlayIconSelected from '../icons/play_circle_filled_black_24dp.svg';
-import PauseIconUnselected from '../icons/pause_circle_black_24dp.svg';
-import PauseIconSelected from '../icons/pause_circle_filled_black_24dp.svg';
 import ForwardIcon from '../icons/fast_forward_black_24dp.svg';
 import RewindIcon from '../icons/fast_rewind_black_24dp.svg';
+import SpeedIcon from '@material-ui/icons/Speed';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
+import Forward10Icon from '@material-ui/icons/Forward10';
+import Replay10Icon from '@material-ui/icons/Replay10';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 class Player extends React.Component {
     constructor(props) {
         super(props);
         this.player = null;
-        this.state = {
+        this.state = { 
             playing: false,
             speed: 1,
             played: 0,
             seeking: false,
             duration: 0,
+            volume: 0.8,
         };
 
         this.togglePlayState = this.togglePlayState.bind(this);
@@ -28,6 +31,7 @@ class Player extends React.Component {
         this.handleSeekMouseDown = this.handleSeekMouseDown.bind(this);
         this.handleRewind = this.handleRewind.bind(this);
         this.handleForward = this.handleForward.bind(this);
+        this.handleVolumeChange = this.handleVolumeChange.bind(this);
     
       }
 
@@ -83,6 +87,10 @@ class Player extends React.Component {
           return (min < 10 ? `0${min}` : min ) + ':' + (sec < 10 ? `0${sec}` : sec )
       }
 
+      handleVolumeChange = e => {
+        this.setState({ volume: parseFloat(e.target.value) })
+      }
+
       ref = player => {
         this.player = player
       }
@@ -93,14 +101,20 @@ class Player extends React.Component {
                     <div className=" h-screen w-screen flex justify-between align-middle ">
                         <div className="cover-wrapper m-auto">
                             <div className="">
-                                <div>
+                                <div className="relative">
                                     <img className="audiobook-cover" 
                                     src={this.props.book.cover} alt=""/>
-                                    <div className="author-info">
+                                    <div className="controls-over">
+                                        <button className='play' onClick={this.togglePlayState}>
+                                            { this.state.playing ? <PauseCircleFilledIcon color={'#252626'} fontSize='inherit'/> : <PlayCircleFilledIcon color={'#252626'} fontSize='inherit' />}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="author-info">
                                         <h3>{this.props.book.author}</h3>
                                         <small>{this.props.book.narrator}</small>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <div className="chapters-wrapper glassmorphism-effect p-3">
@@ -154,9 +168,9 @@ class Player extends React.Component {
                 </div>
                 <div className="player-controls w-screen glassmorphism-effect">
                     <div className="left-controls flex-row">        
-                        <button onClick={this.handleRewind}><img className="icon" src={ RewindIcon } alt="Rewind" /></button>
-                        <button onClick={this.togglePlayState}><img className="icon" src={ this.state.playing ? PauseIconSelected : PlayIconSelected} alt="Play" /></button>
-                        <button onClick={this.handleForward}><img className="icon" src={ ForwardIcon } alt="Forward" /></button>
+                        <button onClick={this.handleRewind}><Replay10Icon color={'#252626'} fontSize='default'/></button>
+                        <button className='play' onClick={this.togglePlayState}>{ this.state.playing ? <PauseCircleFilledIcon color={'#252626'} fontSize='inherit'/> : <PlayCircleFilledIcon color={'#252626'} fontSize='inherit' />}</button>
+                        <button onClick={this.handleForward}><Forward10Icon color={'#252626'} fontSize='default'/></button>
                     </div>
                     <div className="length-controls">
                         <span className='current-time'>{this.secondsToMinutesAndSeconds(this.state.duration * this.state.played)}</span>
@@ -170,19 +184,30 @@ class Player extends React.Component {
                         />
                         <span className="elapsed-time">{this.secondsToMinutesAndSeconds(this.state.duration * (1 - this.state.played))}</span>
                     </div>
-                    <button onClick={this.handleSetPlaybackRate} value={1}>1x</button>
-                    <button onClick={this.handleSetPlaybackRate} value={1.5}>1.5x</button>
-                    <button onClick={this.handleSetPlaybackRate} value={2}>2x</button>
+                    
+                    <div className="speed-controls flex justify-center">
+                        <SpeedIcon color={'#252626'}/>
+                        <button className="mr-2" onClick={this.handleSetPlaybackRate} value={1}>1x</button>
+                        <button className="mr-2" onClick={this.handleSetPlaybackRate} value={1.5}>1.5x</button>
+                        <button className="mr-2" onClick={this.handleSetPlaybackRate} value={2}>2x</button>
+                    </div>
+
+                    <div className="volume-controls flex justify-center">
+                        <VolumeUpIcon color={'#252626'}/>
+                        <input className='volume-bar' type='range' min={0} max={1} step='any' value={this.state.volume} onChange={this.handleVolumeChange} />
+                     </div>
 
                     <ReactPlayer 
-                    style={{'display': 'none'}}
-                    onProgress={this.handleProgress} 
-                    playbackRate={this.state.playbackRate} 
-                    ref={this.ref}
-                    playing={this.state.playing} 
-                    onDuration={this.handleDuration}
-                    url={this.props.book.audio}></ReactPlayer>
+                        style={{'display': 'none'}}
+                        onProgress={this.handleProgress} 
+                        playbackRate={this.state.playbackRate} 
+                        ref={this.ref}
+                        volume={this.state.volume}
+                        playing={this.state.playing} 
+                        onDuration={this.handleDuration}
+                        url={this.props.book.audio}></ReactPlayer>
                 </div>
+                
             </div>  
         )
     } 
