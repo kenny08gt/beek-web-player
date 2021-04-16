@@ -95,30 +95,60 @@ class Player extends React.Component {
                             <div className="">
                                 <div>
                                     <img className="audiobook-cover" 
-                                    src="https://images.findawayworld.com/v1/image/cover/CD396222?width=350&height=350" alt=""/>
+                                    src={this.props.book.cover} alt=""/>
+                                    <div className="author-info">
+                                        <h3>{this.props.book.author}</h3>
+                                        <small>{this.props.book.narrator}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="chapters-wrapper glassmorphism-effect p-3">
-                            <h1>El poder del ahora</h1>
-                            <p>El libro que consagró a Eckhart Tolle como uno de los gurús más importantes del mundo: 'El poder del ahora' . Considerado hoy en día una obra maestra, un libro que deja un mensaje único: se puede alcanzar un estado de iluminación aquí y ahora, es posible vivir libre del sufrimiento, de la ansiedad y de la neurosis. Para lograrlo sólo tenemos que comprender nuestro papel de creadores de nuestro dolor. El poder del ahora es una invitación a la reflexión, para abrirle las puertas a la plenitud espiritual y poder ver la vida con nuevos ojos para empezar a disfrutar del verdadero poder del ahora. Las actividades de Beek son realizadas bajo el amparo del ejercicio del derecho a la libertad de expresión.</p>
+                            <h1>{this.props.book.title}</h1>
+                            <hr/>
+                            <p className="pt-2">{this.props.book.description}</p>
                             <hr/>
                             <h2>Capitulos</h2>
                             <ul>
                                 <li>
-                                    safsadf
+                                    <div className="section-name">
+
+                                    Prefacio
+                                    </div>
+                                    <ul className="chapters">
+                                        <li>Nombre 1 <span>23:45</span></li>
+                                        <li>Nombre 2 <span>12:23</span></li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    safsadf
+                                <div className="section-name">
+
+                                    Parte 1
+                                    </div>
+                                    <ul className="chapters">
+                                        <li>Nombre 1<span>12:23</span></li>
+                                        <li>Nombre 2<span>12:23</span></li>
+                                        <li>Nombre 3<span>12:23</span></li>
+                                        <li>Nombre 4<span>12:23</span></li>
+                                        <li>Nombre 5<span>12:23</span></li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    safsadf
-                                </li>
-                                <li>
-                                    safsadf
+                                <div className="section-name">
+
+                                    Parte 2
+                                    </div>
+                                    <ul className="chapters">
+                                        <li>Nombre 1<span>12:23</span></li>
+                                        <li>Nombre 2<span>12:23</span></li>
+                                        <li>Nombre 3<span>12:23</span></li>
+                                        <li>Nombre 4<span>12:23</span></li>
+                                    </ul>
                                 </li>
                             </ul>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam ad quaerat ipsam architecto. Eaque, nemo adipisci corrupti odio officia tenetur architecto quisquam aliquam sit illo. Ex nam quod tempore fugit!
+                            <div className="legal-info">
+                            {this.props.book.meta}
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +181,7 @@ class Player extends React.Component {
                     ref={this.ref}
                     playing={this.state.playing} 
                     onDuration={this.handleDuration}
-                    url="https://samples.findawayworld.com/411359/411359_sample.mp3"></ReactPlayer>
+                    url={this.props.book.audio}></ReactPlayer>
                 </div>
             </div>  
         )
