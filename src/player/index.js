@@ -6,6 +6,8 @@ import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import Forward10Icon from "@material-ui/icons/Forward10";
 import Replay10Icon from "@material-ui/icons/Replay10";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 class Player extends React.Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class Player extends React.Component {
       seeking: false,
       duration: 0,
       volume: 0.8,
+      fullDescription: false,
     };
 
     this.togglePlayState = this.togglePlayState.bind(this);
@@ -31,6 +34,7 @@ class Player extends React.Component {
     this.handleRewind = this.handleRewind.bind(this);
     this.handleForward = this.handleForward.bind(this);
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
+    this.readMore = this.readMore.bind(this);
   }
 
   togglePlayState() {
@@ -87,6 +91,11 @@ class Player extends React.Component {
     this.setState({ volume: parseFloat(e.target.value) });
   };
 
+  readMore() {
+    console.log("read more");
+    this.setState({ fullDescription: !this.state.fullDescription });
+  }
+
   ref = (player) => {
     this.player = player;
   };
@@ -130,7 +139,21 @@ class Player extends React.Component {
             <div className="chapters-wrapper glassmorphism-effect p-3 md:w-80 hidden md:block">
               <h1>{this.props.book.title}</h1>
               <hr />
-              <p className="pt-2">{this.props.book.description}</p>
+              <p
+                className={
+                  "pt-2 book-description " +
+                  (this.state.fullDescription ? "full" : "")
+                }
+              >
+                {this.props.book.description}
+              </p>
+              <a className="read-more" onClick={this.readMore} href="#nogo">
+                {this.state.fullDescription ? (
+                  <ExpandLessIcon />
+                ) : (
+                  <ExpandMoreIcon />
+                )}
+              </a>
               <hr />
               <h2>Capitulos</h2>
               <ul>
@@ -183,7 +206,7 @@ class Player extends React.Component {
                   </ul>
                 </li>
               </ul>
-              <div className="legal-info">{this.props.book.meta}</div>
+              <div className="meta-info">{this.props.book.meta}</div>
             </div>
           </div>
         </div>

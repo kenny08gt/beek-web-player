@@ -88,6 +88,7 @@ $height_controls: 80px;
       margin-bottom: 90px;
       //   width: 20%;
       overflow-y: scroll;
+      position: relative;
       // background: white;
       h1 {
         font-size: 20px;
@@ -97,16 +98,31 @@ $height_controls: 80px;
         margin-bottom: 10px;
         cursor: default;
       }
-      p {
+      p.book-description {
         font-size: 14px;
         font-family: $font;
         color: $black;
         max-height: 120px;
         overflow: hidden;
         margin-bottom: 20px;
-
         cursor: default;
+        transition: max-height 0.2s;
+        &.full {
+          max-height: fit-content;
+        }
       }
+
+      a.read-more {
+        text-align: center;
+        font-size: 14px;
+        font-family: $font;
+        width: 100%;
+        display: block;
+        &:hover {
+          font-weight: bold;
+        }
+      }
+
       hr {
         border-color: $grey;
       }
@@ -118,7 +134,7 @@ $height_controls: 80px;
         color: $black;
         font-weight: bold;
         margin-bottom: 10px;
-        margin-top: 10px;
+        margin-top: 20px;
       }
 
       ul {
@@ -174,7 +190,7 @@ $height_controls: 80px;
         }
       }
 
-      .legal-info {
+      .meta-info {
         margin-top: 40px;
         font-size: 12px;
         color: $black;
