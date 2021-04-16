@@ -9,6 +9,7 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import Slider from "@material-ui/core/Slider";
+import Chapter from "./chapter";
 
 class Player extends React.Component {
   constructor(props) {
@@ -162,10 +163,10 @@ class Player extends React.Component {
                   <div className="section-name">Prefacio</div>
                   <ul className="chapters">
                     <li>
-                      Nombre 1 <span>23:45</span>
+                      <Chapter listened={true} />
                     </li>
                     <li>
-                      Nombre 2 <span>12:23</span>
+                      <Chapter listened={true} />
                     </li>
                   </ul>
                 </li>
@@ -173,19 +174,22 @@ class Player extends React.Component {
                   <div className="section-name">Parte 1</div>
                   <ul className="chapters">
                     <li>
-                      Nombre 1<span>12:23</span>
+                      <Chapter listened={true} />
                     </li>
                     <li>
-                      Nombre 2<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 3<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 4<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 5<span>12:23</span>
+                      <Chapter />
+                    </li>{" "}
+                    <li>
+                      <Chapter />
                     </li>
                   </ul>
                 </li>
@@ -193,16 +197,16 @@ class Player extends React.Component {
                   <div className="section-name">Parte 2</div>
                   <ul className="chapters">
                     <li>
-                      Nombre 1<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 2<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 3<span>12:23</span>
+                      <Chapter />
                     </li>
                     <li>
-                      Nombre 4<span>12:23</span>
+                      <Chapter />
                     </li>
                   </ul>
                 </li>
