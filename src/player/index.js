@@ -130,7 +130,6 @@ class Player extends React.Component {
                     </div>
                     <div className="length-controls">
                         <span className='current-time'>{this.secondsToMinutesAndSeconds(this.state.duration * this.state.played)}</span>
-                        
                         <input
                         className="seek-bar" 
                         type='range' min={0} max={0.999999} step='any'
