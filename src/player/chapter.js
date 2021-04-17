@@ -7,7 +7,10 @@ class Chapter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      seconds: 0,
+      name: 0,
+    };
 
     // this.togglePlayState = this.togglePlayState.bind(this);
   }
@@ -17,6 +20,14 @@ class Chapter extends React.Component {
     let sec = (seconds - min * 60).toFixed(0);
     return (min < 10 ? `0${min}` : min) + ":" + (sec < 10 ? `0${sec}` : sec);
   };
+
+  setupName() {
+    this.setState({ name: (Math.random() * 10).toFixed(0) });
+  }
+
+  setupSeconds() {
+    this.setState({ seconds: Math.random() * 3400 });
+  }
 
   render() {
     return (
@@ -48,9 +59,15 @@ class Chapter extends React.Component {
             color: this.props.listened ? "#26252575" : "#262525",
           }}
         >
-          <div>Nombre {(Math.random() * 10).toFixed(0)}</div>
+          <div>
+            Nombre {this.state.name ? this.state.name : this.setupName()}
+          </div>
           <div style={{ "margin-top": "-5px" }}>
-            <span>{this.secondsToMinutesAndSeconds(Math.random() * 3400)}</span>
+            <span>
+              {this.state.seconds
+                ? this.secondsToMinutesAndSeconds(this.state.seconds)
+                : this.setupSeconds()}
+            </span>
           </div>
         </div>
       </div>
