@@ -1,5 +1,4 @@
 # React Js Project
-![build badge](https://img.shields.io/appveyor/build/kenny08gt/beek-web-player?style=plastic?raw=true)
 
 It was an Idea for a web player in my favorite audibo book app. Beek.io
 
